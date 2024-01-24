@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block header %}
+{% translate "Заявки на оплату" %}
+{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>{% translate "id"|upper %}</th>
+        <th>{% translate "сумма"|capfirst %}</th>
+        <th>{% translate "реквизиты"|capfirst %}</th>
+        <th>{% translate "статус"|capfirst %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for payment_request in payment_requests %}
+    <tr>
+        <td>{{ payment_request.id|truncatechars:10 }}</td>
+        <td>{{ payment_request.amount }}</td>
+        <td>{{ payment_request.account }}</td>
+        <td>{{ payment_request.get_status_display }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% include './includes/pagination.html' %}
+
+{% endblock %}
