@@ -10,13 +10,62 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>{% translate "id"|upper %}</th>
-        <th>{% translate "тип платежа"|capfirst %}</th>
-        <th>{% translate "тип карты"|capfirst %}</th>
-        <th>{% translate "тип счёта"|capfirst %}</th>
-        <th>{% translate "ФИО владельца"|capfirst %}</th>
-        <th>{% translate "номер телефона"|capfirst %}</th>
-        <th>{% translate "лимит"|capfirst %}</th>
+        <th>{% translate "id"|upper %}
+            {% if ctx_orderby != "id" or ctx_orderby == "id" and ctx_sort == "desc" %}
+                <a href="?qSortBy=id&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "id" and ctx_sort == "asc" %}
+                <a href="?qSortBy=id&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "тип платежа"|capfirst %}
+            {% if ctx_orderby != "payment_type" or ctx_orderby == "payment_type" and ctx_sort == "desc" %}
+                <a href="?qSortBy=payment_type&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "payment_type" and ctx_sort == "asc" %}
+                <a href="?qSortBy=payment_type&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "тип карты"|capfirst %}
+            {% if ctx_orderby != "card_type" or ctx_orderby == "card_type" and ctx_sort == "desc" %}
+                <a href="?qSortBy=card_type&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "card_type" and ctx_sort == "asc" %}
+                <a href="?qSortBy=card_type&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "тип счёта"|capfirst %}
+            {% if ctx_orderby != "account_type" or ctx_orderby == "account_type" and ctx_sort == "desc" %}
+                <a href="?qSortBy=account_type&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "account_type" and ctx_sort == "asc" %}
+                <a href="?qSortBy=account_type&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "ФИО владельца"|capfirst %}
+            {% if ctx_orderby != "owner_name" or ctx_orderby == "owner_name" and ctx_sort == "desc" %}
+                <a href="?qSortBy=owner_name&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "owner_name" and ctx_sort == "asc" %}
+                <a href="?qSortBy=owner_name&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "номер телефона"|capfirst %}
+            {% if ctx_orderby != "phone_number" or ctx_orderby == "phone_number" and ctx_sort == "desc" %}
+                <a href="?qSortBy=phone_number&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "phone_number" and ctx_sort == "asc" %}
+                <a href="?qSortBy=phone_number&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "лимит"|capfirst %}
+            {% if ctx_orderby != "limit" or ctx_orderby == "limit" and ctx_sort == "desc" %}
+                <a href="?qSortBy=limit&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "limit" and ctx_sort == "asc" %}
+                <a href="?qSortBy=limit&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -35,7 +84,7 @@
 </table>
 
 {% if is_paginated %}
-    {% include 'payment_requests/includes/pagination.html' %}
+{% include 'payment_requests/includes/pagination.html' %}
 {% endif %}
 
 {% endblock %}
