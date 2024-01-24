@@ -1,0 +1,29 @@
+{% load django_bootstrap5 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% translate "Менеджер заявок на оплату" %}</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body class="d-flex flex-column min-vh-100">
+{% include 'includes/nav.html' %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">
+        {% block header %}
+        {% endblock %}
+    </h1>
+    {% block content %}
+    {% endblock %}
+</div>
+<footer>
+    <div class="container my-5 pt-4 border-top">
+        <a target="_blank" href="#">{% translate "Наша компания" %}</a>
+    </div>
+</footer>
+</body>
+</html>
