@@ -22,6 +22,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # models field
+    'phonenumber_field',
+
+    # apps
+    'payment_requests.apps.PaymentRequestsConfig'
 ]
 
 MIDDLEWARE = [
