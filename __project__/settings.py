@@ -26,6 +26,9 @@ INSTALLED_APPS = [
     # models field
     'phonenumber_field',
 
+    # front
+    'django_bootstrap5',
+
     # apps
     'payment_requests.apps.PaymentRequestsConfig'
 ]
@@ -45,7 +48,7 @@ ROOT_URLCONF = '__project__.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PROJECT_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
