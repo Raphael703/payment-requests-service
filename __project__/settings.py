@@ -16,6 +16,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,webserver').split(',')
 
 INSTALLED_APPS = [
+    # django contrib
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -23,11 +24,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # models field
+    # model fields
     'phonenumber_field',
 
     # front
     'django_bootstrap5',
+
+    # filters
+    'django_filters',
 
     # apps
     'payment_requests.apps.PaymentRequestsConfig'
