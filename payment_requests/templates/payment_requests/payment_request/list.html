@@ -28,6 +28,8 @@
     </tbody>
 </table>
 
-{% include './includes/pagination.html' %}
+{% if is_paginated %}
+    {% include 'payment_requests/includes/pagination.html' %}
+{% endif %}
 
 {% endblock %}
