@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block header %}
+{% translate "Заявки на оплату" %}
+{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>{% translate "id"|upper %}</th>
+        <th>{% translate "тип платежа"|capfirst %}</th>
+        <th>{% translate "тип карты"|capfirst %}</th>
+        <th>{% translate "тип счёта"|capfirst %}</th>
+        <th>{% translate "ФИО владельца"|capfirst %}</th>
+        <th>{% translate "номер телефона"|capfirst %}</th>
+        <th>{% translate "лимит"|capfirst %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for payment_request in payment_requests %}
+    <tr>
+        <td>{{ payment_request.id|truncatechars:10 }}</td>
+        <td>{{ payment_request.get_payment_type_display }}</td>
+        <td>{{ payment_request.get_card_type_display }}</td>
+        <td>{{ payment_request.get_account_type_display }}</td>
+        <td>{{ payment_request.owner_name }}</td>
+        <td>{{ payment_request.phone_number }}</td>
+        <td>{{ payment_request.limit }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% if is_paginated %}
+    {% include 'payment_requests/includes/pagination.html' %}
+{% endif %}
+
+{% endblock %}
