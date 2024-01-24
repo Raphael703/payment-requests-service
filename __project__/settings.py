@@ -1,12 +1,17 @@
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-SECRET_KEY = 'django-insecure-)(n!&og#s)07mbm5!zn3#!7_+iyj-_syu#n@pn1=wt@0b&7d_&'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,webserver').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -69,7 +74,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
+
+LOCALE_PATHS = [
+    os.path.join(PROJECT_DIR, 'locale'),
+]
 
 TIME_ZONE = 'UTC'
 
