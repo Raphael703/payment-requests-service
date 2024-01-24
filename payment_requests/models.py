@@ -6,6 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from payment_requests.consts import PAYMENT_REQUEST_STATUS, PAYMENT_TYPES, \
     CARD_TYPES, CHECKING_ACCOUNT_TYPES
+from payment_requests.utils import format_name
 
 
 class CheckingAccount(models.Model):
@@ -36,7 +37,8 @@ class CheckingAccount(models.Model):
     )
 
     def __str__(self):
-        return f'Реквизиты # {self.id} - {self.owner_name}'
+        return (f'{format_name(self.owner_name)} / '
+                f'{self.get_payment_type_display()}')
 
     class Meta:
         verbose_name = _('Реквизит')
