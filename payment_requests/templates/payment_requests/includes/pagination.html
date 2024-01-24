@@ -1,0 +1,35 @@
+{% load i18n %}
+
+<div class="pagination justify-content-center text-center">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First">
+                    <span aria-hidden="true">{% translate "первая"|capfirst %}</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">{% translate "первая"|capfirst %}</span>
+            </li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+            {% if i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+                <li class="page-item {% if page_obj.number == i %}active{% endif %}" aria-current="page">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+                    <span aria-hidden="true">{% translate "последняя"|capfirst %}</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">{% translate "последняя"|capfirst %}</span>
+            </li>
+        {% endif %}
+    </ul>
+</div>
