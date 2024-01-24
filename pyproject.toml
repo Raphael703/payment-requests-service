@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "payment-requests-service"
+version = "0.1.0"
+description = "Platform for accepting payment requests"
+authors = ["Raphael <raphael.mukha@gmail.com>"]
+readme = "README.md"
+packages = [
+    {include = "payment_requests_service"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
