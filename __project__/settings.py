@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from django.urls import reverse_lazy
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -98,6 +99,10 @@ LANGUAGE_CODE = 'ru-ru'
 LOCALE_PATHS = [
     os.path.join(PROJECT_DIR, 'locale'),
 ]
+
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 TIME_ZONE = 'UTC'
 
