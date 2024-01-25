@@ -18,7 +18,7 @@ class PaymentRequestListView(AdminRequiredMixin, ListView):
 class CheckingAccountFilerListView(CustomLoginRequiredMixin, SortableListMixin, FilterView):
     model = CheckingAccount
     template_name = 'payment_requests/checking_account/list.html'
-    context_object_name = 'payment_requests'
+    context_object_name = 'checking_accounts'
 
     paginate_by = 16
     default_sort_field = SortField('id')

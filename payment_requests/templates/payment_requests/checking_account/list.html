@@ -72,15 +72,15 @@
     </tr>
     </thead>
     <tbody>
-    {% for payment_request in payment_requests %}
+    {% for checking_account in checking_accounts %}
     <tr>
-        <td>{{ payment_request.id|truncatechars:10 }}</td>
-        <td>{{ payment_request.get_payment_type_display }}</td>
-        <td>{{ payment_request.get_card_type_display }}</td>
-        <td>{{ payment_request.get_account_type_display }}</td>
-        <td>{{ payment_request.owner_name }}</td>
-        <td>{{ payment_request.phone_number }}</td>
-        <td>{{ payment_request.limit }}</td>
+        <td>{{ checking_account.id|truncatechars:10 }}</td>
+        <td>{{ checking_account.get_payment_type_display }}</td>
+        <td>{{ checking_account.get_card_type_display }}</td>
+        <td>{{ checking_account.get_account_type_display }}</td>
+        <td>{{ checking_account.owner_name }}</td>
+        <td>{{ checking_account.phone_number }}</td>
+        <td>{{ checking_account.limit }}</td>
     </tr>
     {% endfor %}
     </tbody>
