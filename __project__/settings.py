@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'django_filters',
 
     # apps
-    'payment_requests.apps.PaymentRequestsConfig'
+    'payment_requests.apps.PaymentRequestsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
