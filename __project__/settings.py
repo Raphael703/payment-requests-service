@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     # apps
     'payment_requests.apps.PaymentRequestsConfig',
     'users.apps.UsersConfig',
+
+    # api
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
