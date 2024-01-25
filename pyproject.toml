@@ -24,6 +24,7 @@ drf-yasg = "^1.21.7"
 
 [tool.poetry.group.dev.dependencies]
 load-dotenv = "^0.1.0"
+factory-boy = "^3.3.0"
 
 [build-system]
 requires = ["poetry-core"]
