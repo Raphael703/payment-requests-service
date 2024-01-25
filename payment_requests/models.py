@@ -43,6 +43,14 @@ class CheckingAccount(models.Model):
         default=DEFAULT_CHECKING_ACCOUNT_LIMIT,
         db_index=True
     )
+    created_at = models.DateTimeField(
+        verbose_name=_('Дата и время создания'),
+        editable=False, auto_now_add=True, db_index=True,
+    )
+    updated_at = models.DateTimeField(
+        verbose_name=_('Дата и время обновления'),
+        editable=False, auto_now=True, db_index=True,
+    )
 
     def __str__(self):
         return (f'{format_name(self.owner_name)} / '
@@ -51,6 +59,7 @@ class CheckingAccount(models.Model):
     class Meta:
         verbose_name = _('Реквизит')
         verbose_name_plural = _('Реквизиты')
+        ordering = ['-created_at']
 
 
 class PaymentRequest(models.Model):
@@ -69,6 +78,14 @@ class PaymentRequest(models.Model):
         choices=PAYMENT_REQUEST_STATUS,
         default=PAYMENT_REQUEST_STATUS.AWAITING
     )
+    created_at = models.DateTimeField(
+        verbose_name=_('Дата и время создания'),
+        editable=False, auto_now_add=True, db_index=True,
+    )
+    updated_at = models.DateTimeField(
+        verbose_name=_('Дата и время обновления'),
+        editable=False, auto_now=True, db_index=True,
+    )
 
     def __str__(self):
         return f'Заявка # {self.id} - Сумма: {self.amount}'
@@ -76,3 +93,4 @@ class PaymentRequest(models.Model):
     class Meta:
         verbose_name = _('Заявка на оплату')
         verbose_name_plural = _('Заявки на оплату')
+        ordering = ['-created_at']
