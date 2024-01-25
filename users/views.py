@@ -30,7 +30,8 @@ class UserLogoutView(SuccessMessageMixin, LogoutView):
         messages.info(request, _('Вы вышли из системы'))
         return super().dispatch(request, *args, **kwargs)
 
-class UsersListView(ListView):
+
+class UsersListView(AdminRequiredMixin, ListView):
     model = get_user_model()
     template_name = 'users/list.html'
     context_object_name = 'users'
