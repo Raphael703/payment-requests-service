@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # api
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -116,3 +117,15 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Basic': {
+            'type': 'basic',
+        }
+    },
+    'DEFAULT_MODEL_RENDERING': 'example',
+    'api_version': '1.0',
+    'enabled_methods': ['get', 'post', 'put', 'patch', 'delete'],
+}
