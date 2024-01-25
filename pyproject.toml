@@ -19,6 +19,7 @@ django-phonenumbers = "^1.0.1"
 django-bootstrap5 = "^23.4"
 django-filter = "^23.5"
 djangorestframework = "^3.14.0"
+drf-yasg = "^1.21.7"
 
 
 [tool.poetry.group.dev.dependencies]
