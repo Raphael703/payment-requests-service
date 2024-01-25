@@ -18,6 +18,11 @@
                         {% translate "Реквизиты" %}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users_list' %}">
+                        {% translate "Пользователи" %}
+                    </a>
+                </li>
                 {% if user.is_authenticated %}
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
