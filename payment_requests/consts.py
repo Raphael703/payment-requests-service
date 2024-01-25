@@ -1,3 +1,5 @@
+from _decimal import Decimal
+
 from django.utils.translation import gettext_lazy as _
 from model_utils import Choices
 
@@ -31,3 +33,5 @@ CHECKING_ACCOUNT_TYPES = Choices(
     (7, 'JOINT', _('Совместный')),
     (8, 'HIGH_INTEREST', _('С высокой процентной ставкой'))
 )
+
+DEFAULT_CHECKING_ACCOUNT_LIMIT = Decimal(1000.00)
