@@ -4,7 +4,7 @@
     <ul class="pagination">
         {% if page_obj.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}&page=1&{{ ctx_sort_qstring }}" aria-label="First">
+                <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}&page=1" aria-label="First">
                     <span aria-hidden="true">{% translate "первая"|capfirst %}</span>
                 </a>
             </li>
@@ -16,13 +16,13 @@
         {% for i in page_obj.paginator.page_range %}
             {% if i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
                 <li class="page-item {% if page_obj.number == i %}active{% endif %}" aria-current="page">
-                    <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}&page={{ i }}&{{ ctx_sort_qstring }}">{{ i }}</a>
+                    <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}&page={{ i }}">{{ i }}</a>
                 </li>
             {% endif %}
         {% endfor %}
         {% if page_obj.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}&page={{ page_obj.paginator.num_pages }}&{{ ctx_sort_qstring }}" aria-label="Last">
+                <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}&page={{ page_obj.paginator.num_pages }}" aria-label="Last">
                     <span aria-hidden="true">{% translate "последняя"|capfirst %}</span>
                 </a>
             </li>
