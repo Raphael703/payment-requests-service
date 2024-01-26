@@ -14,6 +14,11 @@ class PaymentRequestListView(AdminRequiredMixin, ListView):
 
     paginate_by = 16
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total_payment_requests_amount'] = self.model.objects.all().count()
+        return context
+
 
 class CheckingAccountFilerListView(CustomLoginRequiredMixin, SortableListMixin, FilterView):
     model = CheckingAccount
@@ -23,3 +28,8 @@ class CheckingAccountFilerListView(CustomLoginRequiredMixin, SortableListMixin, 
     paginate_by = 16
     default_sort_field = SortField('id')
     filterset_class = CheckingAccountFilterSet
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total_checking_accounts_amount'] = self.model.objects.all().count()
+        return context
