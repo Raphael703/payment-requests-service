@@ -18,6 +18,12 @@
         {% block header %}
         {% endblock %}
     </h1>
+    <p class="text-muted">
+        {% block total_objects_amount %}{% endblock %}
+    </p>
+    <p class="text-muted">
+        {% block objects_amount_on_page %}{% endblock %}
+    </p>
     {% block content %}
     {% endblock %}
 </div>
