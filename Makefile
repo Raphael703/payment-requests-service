@@ -23,7 +23,7 @@ shell:
 	poetry run ./manage.py shell
 
 start:
-	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi:application
+	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) __project__.wsgi:application
 
 DEFAULT_AMOUNT_FOR_TEST_OBJECTS = 50
 fill_db_test_data:
