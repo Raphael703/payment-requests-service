@@ -134,3 +134,8 @@ SWAGGER_SETTINGS = {
     'api_version': '1.0',
     'enabled_methods': ['get', 'post', 'put', 'patch', 'delete'],
 }
+
+# for deploy on render.com
+RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
