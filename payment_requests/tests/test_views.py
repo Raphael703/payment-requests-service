@@ -81,8 +81,8 @@ class TestCheckingAccountFilerListView(SetUpLoggedUserMixin, TestCase):
         )
 
     def test_filter_by_owner_name(self):
-        half_of_owner_name = self.checking_account.owner_name[
-                             :len(self.checking_account.owner_name) // 2]
+        half_of_owner_name = (
+            self.checking_account.owner_name[:len(self.checking_account.owner_name) // 2])
         filter_param = {
             'owner_name': half_of_owner_name
         }
@@ -95,8 +95,8 @@ class TestCheckingAccountFilerListView(SetUpLoggedUserMixin, TestCase):
         )
 
     def test_filter_by_phone_number(self):
-        half_of_phone_number = str(self.checking_account.phone_number)[
-                               :len(self.checking_account.phone_number) // 2]
+        half_of_phone_number = (
+            str(self.checking_account.phone_number)[:len(self.checking_account.phone_number) // 2])
         filter_param = {
             'phone_number': half_of_phone_number
         }
