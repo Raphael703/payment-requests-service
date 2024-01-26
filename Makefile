@@ -25,12 +25,13 @@ shell:
 start:
 	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi:application
 
+DEFAULT_AMOUNT_FOR_TEST_OBJECTS = 50
 fill_db_test_data:
-	poetry run ./manage.py create_test_users
-	poetry run ./manage.py create_test_checking_accounts
-	poetry run ./manage.py create_test_payment_requests
+	poetry run ./manage.py create_test_users $(DEFAULT_AMOUNT_FOR_TEST_OBJECTS)
+	poetry run ./manage.py create_test_checking_accounts $(DEFAULT_AMOUNT_FOR_TEST_OBJECTS)
+	poetry run ./manage.py create_test_payment_requests $(DEFAULT_AMOUNT_FOR_TEST_OBJECTS) $(DEFAULT_AMOUNT_FOR_TEST_OBJECTS)
 
-prod: migrate fill_db_test_data start
+prod: migrate start
 
 test:
 	poetry run ./manage.py test
