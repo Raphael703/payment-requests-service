@@ -11,13 +11,6 @@ class Command(BaseCommand):
     DEFAULT_PASSWORD = 'qwer1234'
 
     def handle(self, *args, **kwargs):
-        # TODO: delete it after first deploy
-        user = UserFactory(
-            username='admin',
-            is_staff=True,
-        )
-        user.set_password(self.DEFAULT_PASSWORD)
-        user.save()
         for _ in range(self.AMOUNT_OF_OBJECTS):
             is_staff = random.choice([True, False])
             user = UserFactory(is_staff=is_staff)
