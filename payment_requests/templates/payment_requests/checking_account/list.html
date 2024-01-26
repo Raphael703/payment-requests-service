@@ -6,6 +6,14 @@
 {% translate "Реквизиты" %}
 {% endblock %}
 
+{% block total_objects_amount %}
+{% translate "Общее количество объектов:" %} {{ total_checking_accounts_amount }}
+{% endblock %}
+
+{% block objects_amount_on_page %}
+{% translate "Кол-во объектов на странице:" %} {{ checking_accounts|length }}
+{% endblock %}
+
 {% block content %}
 
 {% include 'payment_requests/checking_account/filter.html' %}

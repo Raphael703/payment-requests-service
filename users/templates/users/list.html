@@ -6,6 +6,14 @@
 {% translate "Пользователи" %}
 {% endblock %}
 
+{% block total_objects_amount %}
+{% translate "Общее количество объектов:" %} {{ total_users_amount }}
+{% endblock %}
+
+{% block objects_amount_on_page %}
+{% translate "Кол-во объектов на странице:" %} {{ users|length }}
+{% endblock %}
+
 {% block content %}
 <table class="table table-striped">
     <thead>

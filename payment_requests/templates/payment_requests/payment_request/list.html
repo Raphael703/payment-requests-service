@@ -2,6 +2,16 @@
 
 {% load i18n %}
 
+{% block total_objects_amount %}
+{% translate "Общее количество объектов:" %} {{ total_payment_requests_amount }}
+{% endblock %}
+
+{% block objects_amount_on_page %}
+{% translate "Кол-во объектов на странице:" %} {{ payment_requests|length }}
+{% endblock %}
+
+
+
 {% block header %}
 {% translate "Заявки на оплату" %}
 {% endblock %}
