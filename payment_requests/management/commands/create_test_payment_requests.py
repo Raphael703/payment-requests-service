@@ -32,7 +32,7 @@ class Command(BaseCommand):
                 PaymentRequestFactory(account=checking_account)
 
         total_payment_amount = (
-                amount_of_checking_accounts * amount_of_payment_requests_for_each_checking_account
+            amount_of_checking_accounts * amount_of_payment_requests_for_each_checking_account
         )
         self.stdout.write(
             self.style.SUCCESS(f'Test payment requests created successfully. '
