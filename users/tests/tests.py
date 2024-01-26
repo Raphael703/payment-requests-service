@@ -1,21 +1,22 @@
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+
+from users.tests.factories import UserFactory
+
+import faker
 
 
 class SetUpLoggedUserMixin:
     @classmethod
     def setUpTestData(cls):
-        cls.logged_user_data = {'username': 'albert_einstein',
-                                'password': 'qwer1234qwer1234'}
-        cls.logged_user = get_user_model().objects.create_user(
-            username=cls.logged_user_data['username'],
-            password=cls.logged_user_data['password']
-        )
+        cls.logged_user = UserFactory()
+        cls.logged_user_password = faker.Faker().password()
+        cls.logged_user.set_password(cls.logged_user_password)
+        cls.logged_user.save()
 
     def setUp(self):
         self.client.login(username=self.logged_user.username,
-                          password=self.logged_user_data['password'])
+                          password=self.logged_user_password)
 
     def make_logged_user_staff(self):
         self.logged_user.is_staff = True
