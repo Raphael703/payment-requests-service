@@ -12,7 +12,7 @@ class PaymentRequestListView(AdminRequiredMixin, ListView):
     template_name = 'payment_requests/payment_request/list.html'
     context_object_name = 'payment_requests'
 
-    paginate_by = 16
+    paginate_by = 18
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -25,7 +25,7 @@ class CheckingAccountFilerListView(CustomLoginRequiredMixin, SortableListMixin, 
     template_name = 'payment_requests/checking_account/list.html'
     context_object_name = 'checking_accounts'
 
-    paginate_by = 16
+    paginate_by = 18
     default_sort_field = SortField('id')
     filterset_class = CheckingAccountFilterSet
 
