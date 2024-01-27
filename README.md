@@ -1,5 +1,3 @@
-# payment-requests-service
-Платформа для приема заявок на оплату
 ### Tests and linter status:
 
 [![Actions Status](https://github.com/Raphael703/payment-requests-service/actions/workflows/linter.yml/badge.svg)](https://github.com/Raphael703/payment-requests-service/actions)
@@ -31,7 +29,9 @@ _____
 ## Содержание
 
 - [Используемые пакеты](#используемые-пакеты)
+- [Тестовый сервер](#тестовый-сервер)
 - [Для разработчиков](#для-разработчиков)
+- [API](#api)
 - [Автор](#автор)
 
 ## Минимальные требования
@@ -53,6 +53,7 @@ _____
 - [Django Rest Framework](https://www.django-rest-framework.org/)
     - [drf-yasg](https://pypi.org/project/django-model-utils/)
 - [gunicorn](https://gunicorn.org/)
+- [whitenoise](https://pypi.org/project/whitenoise/)
 
 **Зависимости для разработки**:
 
@@ -61,6 +62,17 @@ _____
 - [flake8](https://pypi.org/project/flake8/)
 - [coverage](https://pypi.org/project/coverage/)
 
+## Тестовый сервер
+
+Перейдите по ссылке: [payment-requests-service.com](https://payment-requests-service.onrender.com)
+
+Учётные данные администратора:
+
+**login:** admin
+
+**password:** qwer1234 _(для всех тестовых учётных записей)_
+
+_P.S. У данного тестового сервера выделено не много ресурсов + переход в "режим сна (при бездействии)". Поэтому при первом запросе нужно подождать 2-3 минуты. То же самое с производительностью (мало ресурсов)_ 
 
 ______
 
@@ -110,11 +122,19 @@ docker run -d \
 make dev
 ```
 
-### Перейдите по ссылке
+Перейдите по ссылке [localhost:7777](http://127.0.0.1:7777)
 
-http://127.0.0.1:7777
+
 
 ### Остальные полезные команды можете найти в `Makefile`(е)
+
+## API
+
+Документация доступна на следующих относительных путях от корня домена:
+
+- **swagger/**
+- **swagger<.json/.xml>/**
+- **redoc/**
 
 ## Автор
 
