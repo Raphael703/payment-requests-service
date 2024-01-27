@@ -20,7 +20,7 @@
     <tr>
         <th>{% translate "id"|upper %}</th>
         <th>{% translate "имя пользователя"|capfirst %}</th>
-        <th>{% translate "является админом"|capfirst %}</th>
+        <th>{% translate "роль"|capfirst %}</th>
     </tr>
     </thead>
     <tbody>
@@ -28,13 +28,19 @@
     <tr>
         <td>{{ user.id }}</td>
         <td>{{ user.username }}</td>
-        <td>
-            {% if user.is_staff %}
-                {{ '✅' }}
-            {% else %}
-                {{ '✖️' }}
-            {% endif %}
-        </td>
+        {% if user.is_superuser %}
+            <td class="text-danger">
+                {% translate "админ"|capfirst %}
+            </td>
+        {% elif user.is_staff %}
+            <td class="text-primary">
+                {% translate "персонал"|capfirst %}
+            </td>
+        {% else %}
+            <td>
+                {% translate "пользователь"|capfirst %}
+            </td>
+        {% endif %}
     </tr>
     {% endfor %}
     </tbody>
