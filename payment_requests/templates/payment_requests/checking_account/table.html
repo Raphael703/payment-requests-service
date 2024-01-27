@@ -1,0 +1,77 @@
+{% load i18n %}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>{% translate "id"|upper %}
+            {% if ctx_orderby != "id" or ctx_orderby == "id" and ctx_sort == "desc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=id&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "id" and ctx_sort == "asc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=id&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "тип платежа"|capfirst %}
+            {% if ctx_orderby != "payment_type" or ctx_orderby == "payment_type" and ctx_sort == "desc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=payment_type&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "payment_type" and ctx_sort == "asc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=payment_type&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "тип карты"|capfirst %}
+            {% if ctx_orderby != "card_type" or ctx_orderby == "card_type" and ctx_sort == "desc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=card_type&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "card_type" and ctx_sort == "asc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=card_type&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "тип счёта"|capfirst %}
+            {% if ctx_orderby != "account_type" or ctx_orderby == "account_type" and ctx_sort == "desc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=account_type&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "account_type" and ctx_sort == "asc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=account_type&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "ФИО владельца"|capfirst %}
+            {% if ctx_orderby != "owner_name" or ctx_orderby == "owner_name" and ctx_sort == "desc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=owner_name&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "owner_name" and ctx_sort == "asc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=owner_name&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "номер телефона"|capfirst %}
+            {% if ctx_orderby != "phone_number" or ctx_orderby == "phone_number" and ctx_sort == "desc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=phone_number&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "phone_number" and ctx_sort == "asc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=phone_number&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+        <th>{% translate "лимит"|capfirst %}
+            {% if ctx_orderby != "limit" or ctx_orderby == "limit" and ctx_sort == "desc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=limit&qSortDir=asc">&#x25B2;</a>&nbsp;
+            {% endif %}
+            {% if ctx_orderby == "limit" and ctx_sort == "asc" %}
+                <a href="?{% for key, value in request.GET.items %}&{{ key }}={{ value }}{% endfor %}&qSortBy=limit&qSortDir=desc">&#x25BC;</a>
+            {% endif %}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for checking_account in checking_accounts %}
+    <tr>
+        <td>{{ checking_account.id|truncatechars:6 }}</td>
+        <td>{{ checking_account.get_payment_type_display|truncatechars:15 }}</td>
+        <td>{{ checking_account.get_card_type_display|truncatechars:15 }}</td>
+        <td>{{ checking_account.get_account_type_display|truncatechars:15 }}</td>
+        <td>{{ checking_account.owner_name|truncatechars:15 }}</td>
+        <td>{{ checking_account.phone_number|truncatechars:15 }}</td>
+        <td>{{ checking_account.limit|truncatechars:15 }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
