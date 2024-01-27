@@ -16,6 +16,9 @@ compilemessages:
 makemigrations:
 	poetry run ./manage.py makemigrations
 
+collectstatic:
+	poetry run ./manage.py collectstatic --no-input
+
 migrate:
 	poetry run ./manage.py migrate
 
@@ -31,7 +34,7 @@ fill_db_test_data:
 	poetry run ./manage.py create_test_checking_accounts $(DEFAULT_AMOUNT_FOR_TEST_OBJECTS)
 	poetry run ./manage.py create_test_payment_requests $(DEFAULT_AMOUNT_FOR_TEST_OBJECTS) $(DEFAULT_AMOUNT_FOR_TEST_OBJECTS)
 
-prod: migrate start
+prod: migrate collectstatic start
 
 test:
 	poetry run ./manage.py test
