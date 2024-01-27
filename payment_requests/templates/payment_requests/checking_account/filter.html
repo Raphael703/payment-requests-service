@@ -3,6 +3,8 @@
 
 <div class="card mb-3">
     <div class="card-body bg-light">
+        <h5 class="card-header">{% translate 'Фильтрация и поиск' %}</h5>
+        <br>
         <form class="form-inline center" method="get">
             {% bootstrap_field filter.form.payment_type %}
             {% bootstrap_field filter.form.card_type %}
