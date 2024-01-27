@@ -27,10 +27,10 @@
     {% block content %}
     {% endblock %}
 </div>
-<footer>
-    <div class="container my-5 pt-4 border-top">
-        <a target="_blank" href="#">{% translate "Наша компания" %}</a>
-    </div>
-</footer>
+
+{% block pagination %}
+{% endblock %}
+
+{% include 'includes/footer.html' %}
 </body>
 </html>
