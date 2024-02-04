@@ -32,6 +32,7 @@ _____
 - [Тестовый сервер](#тестовый-сервер)
 - [Для разработчиков](#для-разработчиков)
 - [API](#api)
+- [Deploy](#deploy)
 - [Автор](#автор)
 
 ## Минимальные требования
@@ -96,12 +97,12 @@ cd payment-requests-service
 make install
 ```
 
-#### Создайте .env файл и заполните его (пример)
+#### Создайте .env.dev файл и заполните его (пример) - из него будут браться переменные окружения для разработки
 
 ```dotenv
 SECRET_KEY=notsosecret
 DEBUG=True
-DATABASE_URL=postgresql://pguser:pgpass@localhost:5434/pgdb
+DATABASE_URL=postgresql://pguser:pgpass@localhost:5435/pgdb
 ```
 
 #### Поднимите базу данных (В Docker(е) например):
@@ -135,6 +136,35 @@ make dev
 - **swagger/**
 - **swagger<.json/.xml>/**
 - **redoc/**
+
+# Deploy
+Перед запуском нужно создать .env файл в корне проекта и заполнить его (пример):
+```dotenv
+# web container
+PORT=8000
+# settings.py
+SECRET_KEY=notsosecret
+DEBUG=False
+DATABASE_URL=postgresql://pguser:pgpass@db:5432/pgdb
+
+# db container
+POSTGRES_USER=pguser
+POSTGRES_PASSWORD=pgpass
+POSTGRES_DB=pgdb
+```
+
+Так же добавить `ALLOWED_HOSTS` для вашего ip/домена:
+```dotenv
+# указав конкретный либо:
+ALLOWED_HOSTS=*
+```
+
+Выполните команду для запуска контейнеров:
+```shell
+docker-compose up -d
+```
+
+В зависимости от вашего хостинга, возможно, потребуется настроить веб-сервер (например, nginx), который располагается в папке `infra/nginx.conf`
 
 ## Автор
 
