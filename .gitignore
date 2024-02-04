@@ -134,6 +134,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.dev
 .venv
 env/
 venv/
@@ -183,6 +184,11 @@ cython_debug/
 .idea/**/dictionaries
 .idea/**/shelf
 .idea/.gitignore
+.idea/modules.xml
+.idea/modules
+.idea/*.iml
+.idea/inspectionProfiles
+.idea/vcs.xml
 
 # AWS User-specific
 .idea/**/aws.xml
